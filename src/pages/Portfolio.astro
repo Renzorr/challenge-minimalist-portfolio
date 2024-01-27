@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/Portfolio/ProjectCard.astro";
+import CallToAction from "../components/ui/CallToAction.astro";
+import projectData from "../data/data.json";
+---
+
+<Layout
+  title="Minimalist Portfolio | Portfolio"
+  description="Here, you'll find four projects that highlight my work. From clean designs to practical solutions, each project reflects my dedication. Take a peek into my world where simplicity meets effectiveness. Join me on this journey, exploring the essence of my creative and problem-solving skills. Welcome to my portfolio - let's keep it simple and let the projects do the talking!."
+>
+  {
+    projectData.map((element) => {
+      return (
+        <ProjectCard
+          project={element.project}
+          content={element.content}
+          position={element.position}
+        />
+      );
+    })
+  }
+
+  <CallToAction />
+</Layout>

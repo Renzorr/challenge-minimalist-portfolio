@@ -1,0 +1,108 @@
+<header class="container nav_bar">
+  <img src="/images/logo.svg" alt="logo" />
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/Portfolio">Portfolio</a></li>
+      <li><a href="/Contact">Contact me</a></li>
+    </ul>
+  </nav>
+  <button class="nav_menu"></button>
+</header>
+<nav class="container">
+  <div class="nav_mobile">
+    <ul class="nav_mobile_items">
+      <li><a href="/" class="nav_mobile_item">Home</a></li>
+      <li><a href="/Portfolio" class="nav_mobile_item">Portfolio</a></li>
+      <li><a href="/Contact" class="nav_mobile_item">Contact me</a></li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .nav_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 65px;
+  }
+
+  .nav_bar ul {
+    display: flex;
+    align-items: center;
+    gap: 43px;
+    color: var(--dark-blue);
+  }
+
+  .nav_bar li a {
+    font-family: var(--public-sans);
+    font-size: var(--s-sm);
+    font-weight: var(--semibold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .nav_menu {
+    display: none;
+    width: 25px;
+    height: 25px;
+    background-image: url(../../public/images/icons/hamburger.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .nav_menu.open {
+    background-image: url(../../public/images/icons/close.svg);
+  }
+
+  /* NAV BAR MOBILE */
+  .nav_mobile {
+    position: relative;
+  }
+
+  .nav_mobile_items {
+    display: none;
+    gap: 20px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 80%;
+    z-index: 99;
+    background-color: var(--dark-blue);
+    text-align: center;
+    padding-block: 30px;
+  }
+
+  .nav_mobile_items.open {
+    display: grid;
+  }
+
+  .nav_mobile_item {
+    font-family: var(--public-sans);
+    font-size: var(--s-sm);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--white);
+  }
+
+  @media (width < 690px) {
+    .nav_bar ul {
+      display: none;
+    }
+
+    .nav_menu {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  const hamburgerMenu = document.querySelector(".nav_menu");
+  const navMobile = document.querySelector(".nav_mobile_items");
+
+  hamburgerMenu.addEventListener("click", () => {
+    hamburgerMenu.classList.toggle("open");
+    navMobile.classList.toggle("open");
+  });
+</script>

@@ -1,0 +1,85 @@
+---
+interface Props {
+  previousProject: string;
+  nextProject: string;
+}
+const { previousProject, nextProject } = Astro.props;
+---
+
+<nav class="container project_nav">
+  <a href=`/Portfolio/${previousProject}` class="nav_btn">
+    <img src="/images/icons/arrow-left.svg" alt="" aria-hidden="true"/>
+    <div>
+      <h3>{previousProject}</h3>
+      <p>Previous Project</p>
+    </div>
+  </a>
+  <div class="nav_line"></div>
+  <a href=`/Portfolio/${nextProject}` class="nav_btn next">
+    <div>
+      <h3>{nextProject}</h3>
+      <p>Next Project</p>
+    </div>
+    <img src="/images/icons/arrow-right.svg" alt="" aria-hidden="true"/>
+  </a>
+</nav>
+
+<style>
+  .project_nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    border-block: 1px solid var(--gray);
+    margin-top: 80px;
+  }
+
+  .nav_line {
+    position: absolute;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background-color: var(--gray);
+  }
+
+  .nav_btn {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-block: 35px;
+  }
+
+  .nav_btn:hover {
+    color: var(--cyan);
+  }
+
+  .nav_btn:hover img {
+    filter: invert(71%) sepia(52%) saturate(318%) hue-rotate(117deg)
+      brightness(82%) contrast(86%);
+  }
+
+  .nav_btn h3 {
+    font-family: var(--ibarra);
+    font-size: 32px;
+    font-weight: var(--light);
+    margin-bottom: 5px;
+  }
+
+  .nav_btn p {
+    font-family: var(--public-sans);
+    opacity: 0.4;
+  }
+
+  @media (width < 690px) {
+    .nav_btn {
+      flex-direction: column;
+      align-items: start;
+      gap: 15px;
+    }
+
+    .nav_btn.next {
+      flex-direction: column-reverse;
+      align-items: end;
+      text-align: end;
+    }
+  }
+</style>

@@ -1,0 +1,96 @@
+<section class="container about" id="About">
+  <div class="profile_picture"></div>
+  <article class="about_content">
+    <h2>About Me</h2>
+    <p>
+      I’m a junior front-end developer looking for a new role in an exciting
+      company. I focus on writing accessible HTML, using modern CSS practices
+      and writing clean JavaScript. When writing JavaScript code, I mostly use
+      React, but I can adapt to whatever tools are required. I’m based in
+      London, UK, but I’m happy working remotely and have experience in remote
+      teams. When I’m not coding, you’ll find me outdoors. I love being out in
+      nature whether that’s going for a walk, run or cycling. I’d love you to
+      check out my work.
+    </p>
+    <a href="/Portfolio">Go to Portfolio</a>
+  </article>
+</section>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: minmax(300px, 540px) minmax(300px, 350px);
+    gap: 125px;
+    margin-top: 150px;
+  }
+
+  .profile_picture {
+    min-height: 600px;
+    background-image: url(/images/homepage/desktop/image-homepage-profile.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .about_content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    color: var(--dark-blue);
+    border-block: 1px solid var(--gray);
+    padding-block: 45px;
+  }
+
+  .about_content h2 {
+    font-family: var(--ibarra);
+    font-weight: var(--bold);
+    font-size: var(--s-xl);
+    margin-bottom: 25px;
+  }
+
+  .about_content p {
+    font-family: var(--public-sans);
+    line-height: 30px;
+  }
+
+  .about_content a {
+    font-family: var(--public-sans);
+    font-size: var(--s-sm);
+    font-weight: var(--semibold);
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid var(--dark-blue);
+    margin-top: 23px;
+    padding-block: 15px;
+    padding-inline: 32px;
+
+    &:hover {
+      color: var(--white);
+      background-color: var(--dark-blue);
+    }
+  }
+
+  @media (width < 1024px) {
+    .about {
+      grid-template-columns: minmax(300px, 400px) minmax(300px, 450px);
+      gap: 100px;
+    }
+
+    .profile_picture {
+      background-image: url(/images/homepage/tablet/image-homepage-profile.webp);
+    }
+  }
+
+  @media (width < 690px) {
+    .about {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .profile_picture {
+      background-image: url(/images/homepage/mobile/image-homepage-profile.webp);
+      min-height: 300px;
+    }
+  }
+</style>

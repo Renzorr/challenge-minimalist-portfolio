@@ -1,0 +1,174 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectNav from "../../components/Portfolio/ProjectNav.astro";
+import CallToAction from "../../components/ui/CallToAction.astro";
+import projectData from "../../data/data.json";
+
+export const getStaticPaths = async () => {
+  return projectData.map((element) => ({
+    params: { project: element.project },
+    props: element,
+  }));
+};
+
+interface Props {
+  project: string;
+  content: string;
+  type: string;
+  technology: string;
+  previousProject: string;
+  nextProject: string;
+}
+
+const {
+  props: { project, content, type, technology, previousProject, nextProject },
+} = Astro;
+---
+
+<Layout title={project} description={content}>
+  <main class="container">
+    <img
+      src=`/images/detail/desktop/image-${project}-hero.webp`
+      alt=`${project} preview picture`
+      class="project_bg"
+    />
+    <section class="project_container">
+      <div class="project_content_left">
+        <h1>{project}</h1>
+        <p>{content}</p>
+        <span>{type}</span>
+        <span>{technology}</span>
+        <a href="#">Visit Website</a>
+      </div>
+      <div class="project_content_right">
+        <h2>Project Background</h2>
+        <p>
+          This project was a front-end challenge from Frontend Mentor. It’s a
+          platform that enables you to practice building websites to a design
+          and project brief. Each challenge includes mobile and desktop designs
+          to show how the website should look at different screen sizes.
+          Creating these projects has helped me refine my workflow and solve
+          real-world coding problems. I’ve learned something new with each
+          project, helping me to improve and adapt my style.
+        </p>
+        <h2>Static Previews</h2>
+        <div class="project_container_right_gallery">
+          <img
+            src=`/images/detail/desktop/image-${project}-preview-1.webp`
+            alt=""
+            aria-hidden="true"
+          />
+          <img
+            src=`/images/detail/desktop/image-${project}-preview-2.webp`
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <ProjectNav previousProject={previousProject} nextProject={nextProject} />
+  <CallToAction />
+</Layout>
+
+<style>
+  .project_bg {
+    margin-top: 95px;
+  }
+
+  .project_container {
+    display: grid;
+    grid-template-columns: minmax(300px, 370px) 1fr;
+    gap: 120px;
+    margin-top: 100px;
+  }
+
+  .project_content_left {
+    height: min-content;
+    display: grid;
+    border-block: 1px solid var(--gray);
+    padding-block: 50px;
+    color: var(--dark-blue);
+  }
+
+  .project_content_left h1,
+  .project_content_right h2 {
+    font-family: var(--ibarra);
+    font-size: var(--s-xl);
+    margin-bottom: 25px;
+  }
+
+  .project_content_left h1 {
+    font-weight: var(--bold);
+  }
+
+  .project_content_left p,
+  .project_content_right p {
+    font-family: var(--public-sans);
+    font-size: 15px;
+    line-height: 30px;
+  }
+
+  .project_content_left span {
+    font-family: var(--public-sans);
+    font-weight: var(--semibold);
+    color: var(--cyan);
+    margin-top: 30px;
+  }
+
+  .project_content_left a {
+    max-width: 180px;
+    font-family: var(--public-sans);
+    font-size: var(--s-sm);
+    font-weight: var(--semibold);
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid var(--dark-blue);
+    margin-top: 40px;
+    padding-block: 15px;
+
+    &:hover {
+      color: var(--white);
+      background-color: var(--dark-blue);
+    }
+  }
+
+  .project_content_right h2 {
+    font-size: 32px;
+    font-weight: var(--light);
+  }
+
+  .project_content_right p {
+    margin-bottom: 50px;
+  }
+
+  .project_content_right img:last-child {
+    margin-top: 30px;
+  }
+
+  @media (width < 1024px) {
+    .project_container {
+      grid-template-columns: 1fr;
+      gap: 70px;
+    }
+
+    .project_container_right_gallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .project_content_right img {
+      width: 100%;
+      max-width: 700px;
+    }
+  }
+
+  @media (width < 690px) {
+    .project_container {
+      margin-top: 50px;
+    }
+  }
+</style>

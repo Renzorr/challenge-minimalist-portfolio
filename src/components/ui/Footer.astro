@@ -1,0 +1,91 @@
+<footer>
+  <div class="container footer_container">
+    <div class="footer_left">
+      <img src="/images/logo.svg" alt="logo" />
+      <nav>
+        <ul class="footer_links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/Portfolio">Portfolio</a></li>
+          <li><a href="/Contact">Contact me</a></li>
+        </ul>
+      </nav>
+    </div>
+    <ul class="footer_socials">
+      <li>
+        <a href="https://github.com/Renzorr" target="_blank"
+          ><img src="/images/icons/github.svg" alt="Github icon" /></a
+        >
+      </li>
+      <li>
+        <a href="https://twitter.com/benaventer01" target="_blank"
+          ><img src="/images/icons/twitter.svg" alt="Twitter icon" /></a
+        >
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/" target="_blank"
+          ><img src="/images/icons/linkedin.svg" alt="LinkedIn icon" /></a
+        >
+      </li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    margin-top: 151px;
+    padding-block: 25px;
+  }
+
+  .footer_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer img {
+    filter: invert(95%) sepia(96%) saturate(1%) hue-rotate(223deg)
+      brightness(105%) contrast(100%);
+  }
+
+  footer ul {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer_left {
+    display: flex;
+    align-items: center;
+    gap: 49px;
+  }
+
+  .footer_links {
+    gap: 41px;
+  }
+
+  .footer_links a {
+    font-family: var(--public-sans);
+    font-size: var(--s-sm);
+    font-weight: var(--semibold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .footer_socials {
+    gap: 15px;
+    margin-top: 5px;
+  }
+
+  @media (width < 690px) {
+    .footer_container {
+      flex-direction: column;
+      justify-content: center;
+      gap: 50px;
+    }
+
+    .footer_left {
+      flex-direction: column;
+    }
+  }
+</style>

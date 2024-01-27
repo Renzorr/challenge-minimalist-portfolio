@@ -1,0 +1,152 @@
+<section class="container">
+  <div class="contact_container">
+    <h2>Contact Me</h2>
+    <form class="contact_form" action="">
+      <div class="contact_form_input">
+        <label for="name">Name</label>
+        <input type="text" placeholder="Jane Appleseed" class="contact_field" />
+        <span class="contact_form_input_alert">This field is required</span>
+      </div>
+      <div class="contact_form_input">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          placeholder="email@example.com"
+          class="contact_field"
+        />
+        <span class="contact_form_input_alert">This field is required</span>
+      </div>
+      <div class="contact_form_input">
+        <label for="message">Message</label>
+        <textarea
+          name="message"
+          placeholder="How can I help?"
+          class="contact_field"></textarea>
+        <span class="contact_form_input_alert">This field is required</span>
+      </div>
+      <input type="submit" value="Send message" class="contact_submit" />
+    </form>
+  </div>
+</section>
+
+<script>
+  const inputFields = document.querySelectorAll(".contact_field");
+  const contactForm = document.querySelector(".contact_form");
+  const alertMessages = document.querySelectorAll(".contact_form_input_alert");
+
+  contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    inputFields.forEach((inputField, index) => {
+      const alertMessage = alertMessages[index];
+      if (inputField.value === "") {
+        inputField.classList.add("required");
+        alertMessage.classList.add("active");
+      }
+    });
+  });
+
+  inputFields.forEach((inputField, index) => {
+    const alertMessage = alertMessages[index];
+    inputField.addEventListener("focus", () => {
+      inputField.classList.remove("required");
+      alertMessage.classList.remove("active");
+    });
+  });
+</script>
+
+<style>
+  .contact_container {
+    display: grid;
+    grid-template-columns: 1fr minmax(300px, 620px);
+    color: var(--dark-blue);
+    border-top: 1px solid var(--gray);
+    padding-block: 50px;
+  }
+
+  .contact_container h2 {
+    font-family: var(--ibarra);
+    font-size: var(--s-xl);
+    font-weight: var(--bold);
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    font-family: var(--public-sans);
+  }
+
+  .contact_form_input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .contact_form_input label {
+    font-size: var(--s-sm);
+    font-weight: var(--semibold);
+  }
+
+  .contact_field {
+    background-color: var(--pale-gray);
+    padding: 15px 20px;
+    border: 1px solid transparent;
+  }
+
+  textarea {
+    min-height: 110px;
+  }
+
+  .contact_submit {
+    display: inline-block;
+    width: 100%;
+    max-width: 162px;
+    font-family: var(--public-sans);
+    font-size: var(--s-sm);
+    font-weight: var(--semibold);
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--white);
+    background-color: var(--dark-blue);
+    border: 1px solid var(--dark-blue);
+    padding-block: 15px;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--dark-blue);
+      background-color: transparent;
+    }
+  }
+
+  .contact_form_input_alert {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 12px;
+    color: var(--red);
+    opacity: 0;
+  }
+
+  .contact_form_input_alert.active {
+    bottom: -20px;
+    opacity: 1;
+  }
+
+  @media (width < 1024px) {
+    .contact_container {
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+  }
+
+  .contact_field:focus {
+    border: 1px solid var(--cyan);
+  }
+
+  .contact_field.required {
+    border: 1px solid var(--red);
+  }
+</style>

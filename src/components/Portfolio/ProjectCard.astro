@@ -1,0 +1,117 @@
+---
+interface Props {
+  project: string;
+  content: string;
+  position: string;
+}
+const { project, content, position } = Astro.props;
+---
+
+<section class="container project_card">
+  <div class={`project_card_container ${position}`}>
+    <picture class={`project_card_picture ${position}`}>
+      <img src=`/images/portfolio/desktop/image-portfolio-${project}.webp` alt={`${project} project picture`} />
+    </picture>
+    <article class={`project_card_content ${position}`}>
+      <h3>{project}</h3>
+      <p>{content}</p>
+      <a href=`/Portfolio/${project}`>View Project</a>
+    </article>
+  </div>
+</section>
+
+<style>
+  .project_card {
+    margin-top: 95px;
+  }
+
+  .project_card_container {
+    display: grid;
+    grid-template-columns: minmax(400px, 540px) minmax(300px, 350px);
+    gap: 130px;
+  }
+
+  .project_card_container.left {
+    grid-template-columns: minmax(300px, 350px) minmax(400px, 540px);
+    justify-content: end;
+  }
+
+  .project_card_picture.left {
+    grid-column: 2/3;
+  }
+
+  .project_card_content.left {
+    grid-column: 1/2;
+    grid-row: 1;
+  }
+
+  .project_card_content {
+    display: flex;
+    flex-direction: column;
+    color: var(--dark-blue);
+    border-block: 1px solid var(--gray);
+    padding-block: 105px 50px;
+  }
+
+  .project_card_content h3 {
+    font-family: var(--ibarra);
+    font-size: var(--s-xl);
+    font-weight: var(--bold);
+    margin-bottom: 25px;
+  }
+
+  .project_card_content p {
+    font-family: var(--public-sans);
+    line-height: 30px;
+  }
+
+  .project_card_content a {
+    width: 100%;
+    max-width: 162px;
+    font-family: var(--public-sans);
+    font-size: var(--s-sm);
+    font-weight: var(--semibold);
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid var(--dark-blue);
+    padding-block: 15px;
+    margin-top: 30px;
+
+    &:hover {
+      color: var(--white);
+      background-color: var(--dark-blue);
+    }
+  }
+
+  @media (width < 1024px) {
+    .project_card_container,
+    .project_card_container.left {
+      grid-template-columns: minmax(320px, 390px) minmax(300px, 380px);
+      justify-content: center;
+      align-items: center;
+      gap: 90px;
+    }
+
+    .project_card_content {
+      padding-block: 50px;
+    }
+  }
+
+  @media (width < 690px) {
+    .project_card_container,
+    .project_card_container.left {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .project_card_picture.left {
+      grid-column: auto;
+    }
+
+    .project_card_content.left {
+      grid-column: auto;
+      grid-row: 2;
+    }
+  }
+</style>

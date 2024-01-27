@@ -1,0 +1,79 @@
+<section class="container">
+  <div class="get-in-touch">
+    <h2>Get in Touch</h2>
+    <div class="get-in-touch_content">
+      <p>
+        I’d love to hear about what you’re working on and how I could help. I’m
+        currently looking for a new role and am open to a wide range of
+        opportunities. My preference would be to find a position in a company in
+        London. But I’m also happy to hear about opportunites that don’t fit
+        that description. I’m a hard-working and positive person who will always
+        approach each task with a sense of purpose and attention to detail.
+        Please do feel free to check out my online profiles below and get in
+        touch using the form.
+      </p>
+      <ul class="get-in-touch_socials">
+        <li>
+          <a href="https://github.com/Renzorr" target="_blank"
+            ><img
+              src="/images/icons/github.svg"
+              alt="Github icon"
+            /></a
+          >
+        </li>
+        <li>
+          <a href="https://twitter.com/benaventer01" target="_blank"
+            ><img
+              src="/images/icons/twitter.svg"
+              alt="Twitter icon"
+            /></a
+          >
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/" target="_blank"
+            ><img
+              src="/images/icons/linkedin.svg"
+              alt="LinkedIn icon"
+            /></a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .get-in-touch {
+    display: grid;
+    grid-template-columns: 1fr minmax(300px, 620px);
+    color: var(--dark-blue);
+    border-top: 1px solid var(--gray);
+    margin-top: 90px;
+    padding-block: 50px;
+  }
+
+  .get-in-touch h2 {
+    font-family: var(--ibarra);
+    font-size: var(--s-xl);
+    font-weight: var(--bold);
+  }
+
+  .get-in-touch_content p {
+    font-family: var(--public-sans);
+    line-height: 30px;
+    margin-bottom: 30px;
+  }
+
+  .get-in-touch_socials {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  @media (width < 1024px) {
+    .get-in-touch {
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+  }
+</style>

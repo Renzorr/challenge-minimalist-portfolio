@@ -1,0 +1,58 @@
+<section class="container cta">
+  <h2>Interested in doing a project together?</h2>
+  <div class="cta_line"></div>
+  <a href="/Contact">Contact me</a>
+</section>
+
+<style>
+  .cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 150px;
+  }
+
+  .cta h2 {
+    max-width: 350px;
+    font-family: var(--ibarra);
+    font-size: var(--s-xl);
+    font-weight: var(--bold);
+    line-height: 40px;
+  }
+
+  .cta_line {
+    width: 48%;
+    height: 1px;
+    background-color: var(--gray);
+    margin-top: 15px;
+  }
+
+  .cta a {
+    width: 100%;
+    max-width: 162px;
+    font-family: var(--public-sans);
+    font-size: var(--s-sm);
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    border: 1px solid var(--dark-blue);
+    padding-block: 15px;
+
+    &:hover {
+      color: var(--white);
+      background-color: var(--dark-blue);
+    }
+  }
+
+  @media (width < 690px) {
+    .cta {
+      flex-direction: column;
+      text-align: center;
+      gap: 60px;
+    }
+
+    .cta_line {
+      display: none;
+    }
+  }
+</style>
