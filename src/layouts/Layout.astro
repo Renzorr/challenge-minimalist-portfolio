@@ -5,9 +5,10 @@ import Footer from "../components/ui/Footer.astro";
 interface Props {
   title: string;
   description: string;
+  segment: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, segment } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +22,7 @@ const { title, description } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <Header />
+    <Header segment={segment} />
     <slot />
     <Footer />
   </body>

@@ -1,26 +1,45 @@
-<header class="container nav_bar">
+---
+const { segment } = Astro.props;
+---
+
+<header class="container menu">
   <img src="/images/logo.svg" alt="logo" />
   <nav>
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/Portfolio">Portfolio</a></li>
-      <li><a href="/Contact">Contact me</a></li>
+      <li>
+        <a href="/" aria-current={segment === "home" ? "page" : undefined}
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          href="/Portfolio"
+          aria-current={segment == "portfolio" ? "page" : undefined}
+          >Portfolio</a
+        >
+      </li>
+      <li>
+        <a
+          href="/Contact"
+          aria-current={segment == "contact" ? "page" : undefined}>Contact me</a
+        >
+      </li>
     </ul>
   </nav>
-  <button class="nav_menu"></button>
+  <button class="menu_btn"></button>
 </header>
 <nav class="container">
-  <div class="nav_mobile">
-    <ul class="nav_mobile_items">
-      <li><a href="/" class="nav_mobile_item">Home</a></li>
-      <li><a href="/Portfolio" class="nav_mobile_item">Portfolio</a></li>
-      <li><a href="/Contact" class="nav_mobile_item">Contact me</a></li>
+  <div class="menu_mobile">
+    <ul class="menu_mobile_items">
+      <li><a href="/" class="menu_mobile_item">Home</a></li>
+      <li><a href="/Portfolio" class="menu_mobile_item">Portfolio</a></li>
+      <li><a href="/Contact" class="menu_mobile_item">Contact me</a></li>
     </ul>
   </div>
 </nav>
 
 <style>
-  .nav_bar {
+  .menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -28,14 +47,14 @@
     margin-top: 65px;
   }
 
-  .nav_bar ul {
+  .menu ul {
     display: flex;
     align-items: center;
     gap: 43px;
     color: var(--dark-blue);
   }
 
-  .nav_bar li a {
+  .menu li a {
     font-family: var(--public-sans);
     font-size: var(--s-sm);
     font-weight: var(--semibold);
@@ -43,25 +62,30 @@
     letter-spacing: 1px;
   }
 
-  .nav_menu {
+  .menu li a[aria-current="page"] {
+    color: var(--cyan);
+  }
+
+  .menu_btn {
     display: none;
     width: 25px;
     height: 25px;
-    background-image: url(../../public/images/icons/hamburger.svg);
+    background-image: url(/images/icons/hamburger.svg);
     background-position: center;
     background-repeat: no-repeat;
   }
 
-  .nav_menu.open {
-    background-image: url(../../public/images/icons/close.svg);
+  .menu_btn.open {
+    background-image: url(/images/icons/close.svg);
   }
 
   /* NAV BAR MOBILE */
-  .nav_mobile {
+  .menu_mobile {
     position: relative;
+    display: none;
   }
 
-  .nav_mobile_items {
+  .menu_mobile_items {
     display: none;
     gap: 20px;
     position: absolute;
@@ -74,11 +98,11 @@
     padding-block: 30px;
   }
 
-  .nav_mobile_items.open {
+  .menu_mobile_items.open {
     display: grid;
   }
 
-  .nav_mobile_item {
+  .menu_mobile_item {
     font-family: var(--public-sans);
     font-size: var(--s-sm);
     text-transform: uppercase;
@@ -87,22 +111,26 @@
   }
 
   @media (width < 690px) {
-    .nav_bar ul {
+    .menu_mobile {
+      display: inherit;
+    }
+
+    .menu ul {
       display: none;
     }
 
-    .nav_menu {
+    .menu_btn {
       display: block;
     }
   }
 </style>
 
 <script>
-  const hamburgerMenu = document.querySelector(".nav_menu");
-  const navMobile = document.querySelector(".nav_mobile_items");
+  const hamburgerMenu = document.querySelector(".menu_btn");
+  const menuMobile = document.querySelector(".menu_mobile_items");
 
   hamburgerMenu.addEventListener("click", () => {
     hamburgerMenu.classList.toggle("open");
-    navMobile.classList.toggle("open");
+    menuMobile.classList.toggle("open");
   });
 </script>
